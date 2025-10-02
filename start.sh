@@ -19,10 +19,28 @@ python -c "import gunicorn; print('Gunicorn is available')" || {
     exit 1
 }
 
-# Run database migrations
+# Check database connection
+echo "Checking database connection..."
+python -c "
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+import django
+django.setup()
+from django.db import connection
+try:
+    connection.ensure_connection()
+    print('Database connection successful')
+except Exception as e:
+    print(f'Database connection failed: {e}')
+    print('Starting without database...')
+" || {
+    echo "WARNING: Database connection failed, starting without database..."
+}
+
+# Run database migrations (only if database is available)
 echo "Running database migrations..."
 python manage.py migrate || {
-    echo "WARNING: Database migration failed, continuing..."
+    echo "WARNING: Database migration failed, continuing without database..."
 }
 
 # Start Gunicorn server

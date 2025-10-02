@@ -1,0 +1,251 @@
+2025-10-02T16:53:50.312785159Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/__init__.py", line 24, in setup
+2025-10-02T16:53:50.312787239Z     apps.populate(settings.INSTALLED_APPS)
+2025-10-02T16:53:50.312789259Z     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:53:50.312791289Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/apps/registry.py", line 116, in populate
+2025-10-02T16:53:50.312793349Z     app_config.import_models()
+2025-10-02T16:53:50.312800109Z     ~~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-10-02T16:53:50.312802489Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/apps/config.py", line 269, in import_models
+2025-10-02T16:53:50.31280468Z     self.models_module = import_module(models_module_name)
+2025-10-02T16:53:50.312806749Z                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:53:50.312808889Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:53:50.31281099Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:53:50.3128131Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:53:50.31281522Z   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-10-02T16:53:50.31281725Z   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-10-02T16:53:50.31281937Z   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-10-02T16:53:50.31282144Z   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-10-02T16:53:50.31282349Z   File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+2025-10-02T16:53:50.31282547Z   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-10-02T16:53:50.31282767Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/contrib/auth/models.py", line 3, in <module>
+2025-10-02T16:53:50.31282974Z     from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+2025-10-02T16:53:50.312847591Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/contrib/auth/base_user.py", line 57, in <module>
+2025-10-02T16:53:50.312850471Z     class AbstractBaseUser(models.Model):
+2025-10-02T16:53:50.312852721Z     ...<109 lines>...
+2025-10-02T16:53:50.312854771Z             )
+2025-10-02T16:53:50.312856901Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 143, in __new__
+2025-10-02T16:53:50.312858941Z     new_class.add_to_class("_meta", Options(meta, app_label))
+2025-10-02T16:53:50.312861141Z     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:53:50.312863251Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 371, in add_to_class
+2025-10-02T16:53:50.312865501Z     value.contribute_to_class(cls, name)
+2025-10-02T16:53:50.312867661Z     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+2025-10-02T16:53:50.312870581Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/options.py", line 243, in contribute_to_class
+2025-10-02T16:53:50.312872871Z     self.db_table, connection.ops.max_name_length()
+2025-10-02T16:53:50.312875051Z                    ^^^^^^^^^^^^^^
+2025-10-02T16:53:50.312877221Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/utils/connection.py", line 15, in __getattr__
+2025-10-02T16:53:50.312879511Z     return getattr(self._connections[self._alias], item)
+2025-10-02T16:53:50.312881722Z                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2025-10-02T16:53:50.312883931Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/utils/connection.py", line 62, in __getitem__
+2025-10-02T16:53:50.312886042Z     conn = self.create_connection(alias)
+2025-10-02T16:53:50.312888482Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/utils.py", line 193, in create_connection
+2025-10-02T16:53:50.312890942Z     backend = load_backend(db["ENGINE"])
+2025-10-02T16:53:50.312893402Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/utils.py", line 113, in load_backend
+2025-10-02T16:53:50.312901912Z     return import_module("%s.base" % backend_name)
+2025-10-02T16:53:50.312904662Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:53:50.312906912Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:53:50.312909002Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:53:50.312911192Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+2025-10-02T16:53:50.312913462Z     raise ImproperlyConfigured("Error loading psycopg2 or psycopg module")
+2025-10-02T16:53:50.312925093Z django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 or psycopg module
+2025-10-02T16:53:52.017468257Z ==> Exited with status 1
+2025-10-02T16:53:52.193786626Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-10-02T16:53:57.678557276Z ==> Running './start.sh'
+2025-10-02T16:53:57.770495398Z Checking Django installation...
+2025-10-02T16:53:58.167181161Z Django 4.2.7 is available
+2025-10-02T16:53:58.176002954Z Checking Gunicorn installation...
+2025-10-02T16:53:58.275846105Z Gunicorn is available
+2025-10-02T16:53:58.278829274Z Running database migrations...
+2025-10-02T16:54:03.078466312Z /opt/render/project/src/.venv/lib/python3.13/site-packages/drf_yasg/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+2025-10-02T16:54:03.078487493Z   from pkg_resources import DistributionNotFound, get_distribution
+2025-10-02T16:54:03.478858423Z Traceback (most recent call last):
+2025-10-02T16:54:03.479035878Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+2025-10-02T16:54:03.479043608Z     import psycopg as Database
+2025-10-02T16:54:03.479047528Z ModuleNotFoundError: No module named 'psycopg'
+2025-10-02T16:54:03.47913258Z 
+2025-10-02T16:54:03.479144371Z During handling of the above exception, another exception occurred:
+2025-10-02T16:54:03.479147361Z 
+2025-10-02T16:54:03.479150421Z Traceback (most recent call last):
+2025-10-02T16:54:03.479370317Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 27, in <module>
+2025-10-02T16:54:03.479378247Z     import psycopg2 as Database
+2025-10-02T16:54:03.479383847Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/psycopg2/__init__.py", line 51, in <module>
+2025-10-02T16:54:03.479388717Z     from psycopg2._psycopg import (                     # noqa
+2025-10-02T16:54:03.479393698Z     ...<10 lines>...
+2025-10-02T16:54:03.479397498Z     )
+2025-10-02T16:54:03.479401978Z ImportError: /opt/render/project/src/.venv/lib/python3.13/site-packages/psycopg2/_psycopg.cpython-313-x86_64-linux-gnu.so: undefined symbol: _PyInterpreterState_Get
+2025-10-02T16:54:03.479405778Z 
+2025-10-02T16:54:03.479410538Z During handling of the above exception, another exception occurred:
+2025-10-02T16:54:03.479414638Z 
+2025-10-02T16:54:03.479419308Z Traceback (most recent call last):
+2025-10-02T16:54:03.567622171Z   File "/opt/render/project/src/manage.py", line 22, in <module>
+2025-10-02T16:54:03.567652822Z     main()
+2025-10-02T16:54:03.567657832Z     ~~~~^^
+2025-10-02T16:54:03.567661682Z   File "/opt/render/project/src/manage.py", line 18, in main
+2025-10-02T16:54:03.567666062Z     execute_from_command_line(sys.argv)
+2025-10-02T16:54:03.567669902Z     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-02T16:54:03.567674333Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+2025-10-02T16:54:03.567678823Z     utility.execute()
+2025-10-02T16:54:03.567682673Z     ~~~~~~~~~~~~~~~^^
+2025-10-02T16:54:03.567686633Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/core/management/__init__.py", line 416, in execute
+2025-10-02T16:54:03.567690463Z     django.setup()
+2025-10-02T16:54:03.567694123Z     ~~~~~~~~~~~~^^
+2025-10-02T16:54:03.567698193Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/__init__.py", line 24, in setup
+2025-10-02T16:54:03.567702043Z     apps.populate(settings.INSTALLED_APPS)
+2025-10-02T16:54:03.567705713Z     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:03.567709634Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/apps/registry.py", line 116, in populate
+2025-10-02T16:54:03.567723174Z     app_config.import_models()
+2025-10-02T16:54:03.567725674Z     ~~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-10-02T16:54:03.567728144Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/apps/config.py", line 269, in import_models
+2025-10-02T16:54:03.567730644Z     self.models_module = import_module(models_module_name)
+2025-10-02T16:54:03.567733234Z                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:03.567735744Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:54:03.567738504Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:54:03.567741294Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:03.567744064Z   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-10-02T16:54:03.567746984Z   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-10-02T16:54:03.567749475Z   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-10-02T16:54:03.567751935Z   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-10-02T16:54:03.567754295Z   File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+2025-10-02T16:54:03.567756365Z   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-10-02T16:54:03.567758635Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/contrib/auth/models.py", line 3, in <module>
+2025-10-02T16:54:03.567760845Z     from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+2025-10-02T16:54:03.567763055Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/contrib/auth/base_user.py", line 57, in <module>
+2025-10-02T16:54:03.567765245Z     class AbstractBaseUser(models.Model):
+2025-10-02T16:54:03.567767385Z     ...<109 lines>...
+2025-10-02T16:54:03.567769485Z             )
+2025-10-02T16:54:03.567771815Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 143, in __new__
+2025-10-02T16:54:03.567774025Z     new_class.add_to_class("_meta", Options(meta, app_label))
+2025-10-02T16:54:03.567776205Z     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:03.567778465Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 371, in add_to_class
+2025-10-02T16:54:03.567780495Z     value.contribute_to_class(cls, name)
+2025-10-02T16:54:03.567782656Z     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+2025-10-02T16:54:03.567784885Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/options.py", line 243, in contribute_to_class
+2025-10-02T16:54:03.567786996Z     self.db_table, connection.ops.max_name_length()
+2025-10-02T16:54:03.567789166Z                    ^^^^^^^^^^^^^^
+2025-10-02T16:54:03.567791386Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/utils/connection.py", line 15, in __getattr__
+2025-10-02T16:54:03.567793546Z     return getattr(self._connections[self._alias], item)
+2025-10-02T16:54:03.567795716Z                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2025-10-02T16:54:03.567797886Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/utils/connection.py", line 62, in __getitem__
+2025-10-02T16:54:03.567800236Z     conn = self.create_connection(alias)
+2025-10-02T16:54:03.567802396Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/utils.py", line 193, in create_connection
+2025-10-02T16:54:03.567804556Z     backend = load_backend(db["ENGINE"])
+2025-10-02T16:54:03.567806586Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/utils.py", line 113, in load_backend
+2025-10-02T16:54:03.567814296Z     return import_module("%s.base" % backend_name)
+2025-10-02T16:54:03.567817226Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:54:03.567819897Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:54:03.567822166Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:03.567824277Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+2025-10-02T16:54:03.567826497Z     raise ImproperlyConfigured("Error loading psycopg2 or psycopg module")
+2025-10-02T16:54:03.567844087Z django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 or psycopg module
+2025-10-02T16:54:04.066047845Z WARNING: Database migration failed, continuing...
+2025-10-02T16:54:04.066068446Z Starting Gunicorn server...
+2025-10-02T16:54:06.273192378Z /opt/render/project/src/.venv/lib/python3.13/site-packages/drf_yasg/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+2025-10-02T16:54:06.273212579Z   from pkg_resources import DistributionNotFound, get_distribution
+2025-10-02T16:54:06.477850781Z Traceback (most recent call last):
+2025-10-02T16:54:06.478072798Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+2025-10-02T16:54:06.478084268Z     import psycopg as Database
+2025-10-02T16:54:06.478087538Z ModuleNotFoundError: No module named 'psycopg'
+2025-10-02T16:54:06.47815014Z 
+2025-10-02T16:54:06.47815898Z During handling of the above exception, another exception occurred:
+2025-10-02T16:54:06.47816205Z 
+2025-10-02T16:54:06.480002789Z Traceback (most recent call last):
+2025-10-02T16:54:06.480011909Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 27, in <module>
+2025-10-02T16:54:06.480014359Z     import psycopg2 as Database
+2025-10-02T16:54:06.480017239Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/psycopg2/__init__.py", line 51, in <module>
+2025-10-02T16:54:06.480019839Z     from psycopg2._psycopg import (                     # noqa
+2025-10-02T16:54:06.480031709Z     ...<10 lines>...
+2025-10-02T16:54:06.480033549Z     )
+2025-10-02T16:54:06.480035759Z ImportError: /opt/render/project/src/.venv/lib/python3.13/site-packages/psycopg2/_psycopg.cpython-313-x86_64-linux-gnu.so: undefined symbol: _PyInterpreterState_Get
+2025-10-02T16:54:06.48003739Z 
+2025-10-02T16:54:06.48003967Z During handling of the above exception, another exception occurred:
+2025-10-02T16:54:06.480041219Z 
+2025-10-02T16:54:06.48004327Z Traceback (most recent call last):
+2025-10-02T16:54:06.567974076Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 7, in <module>
+2025-10-02T16:54:06.567990686Z     sys.exit(run())
+2025-10-02T16:54:06.567993776Z              ~~~^^
+2025-10-02T16:54:06.567996936Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-10-02T16:54:06.568000246Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-10-02T16:54:06.568003656Z     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-10-02T16:54:06.568006866Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 236, in run
+2025-10-02T16:54:06.568021547Z     super().run()
+2025-10-02T16:54:06.568024217Z     ~~~~~~~~~~~^^
+2025-10-02T16:54:06.568026827Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 72, in run
+2025-10-02T16:54:06.568029347Z     Arbiter(self).run()
+2025-10-02T16:54:06.568031967Z     ~~~~~~~^^^^^^
+2025-10-02T16:54:06.568034597Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-10-02T16:54:06.568037637Z     self.setup(app)
+2025-10-02T16:54:06.568040377Z     ~~~~~~~~~~^^^^^
+2025-10-02T16:54:06.568043147Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-10-02T16:54:06.568045727Z     self.app.wsgi()
+2025-10-02T16:54:06.568048238Z     ~~~~~~~~~~~~~^^
+2025-10-02T16:54:06.568050638Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-10-02T16:54:06.568053608Z     self.callable = self.load()
+2025-10-02T16:54:06.568056768Z                     ~~~~~~~~~^^
+2025-10-02T16:54:06.568059338Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-10-02T16:54:06.568061908Z     return self.load_wsgiapp()
+2025-10-02T16:54:06.568064328Z            ~~~~~~~~~~~~~~~~~^^
+2025-10-02T16:54:06.568067788Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-10-02T16:54:06.568071338Z     return util.import_app(self.app_uri)
+2025-10-02T16:54:06.568073968Z            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+2025-10-02T16:54:06.568088008Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/gunicorn/util.py", line 371, in import_app
+2025-10-02T16:54:06.568091189Z     mod = importlib.import_module(module)
+2025-10-02T16:54:06.568094069Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:54:06.568096889Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:54:06.568099499Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.568102259Z   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-10-02T16:54:06.568105039Z   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-10-02T16:54:06.568107779Z   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-10-02T16:54:06.568110579Z   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-10-02T16:54:06.568113219Z   File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+2025-10-02T16:54:06.568115929Z   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-10-02T16:54:06.568118619Z   File "/opt/render/project/src/core/wsgi.py", line 16, in <module>
+2025-10-02T16:54:06.568121469Z     application = get_wsgi_application()
+2025-10-02T16:54:06.568124129Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-10-02T16:54:06.568126929Z     django.setup(set_prefix=False)
+2025-10-02T16:54:06.56812955Z     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.56813231Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/__init__.py", line 24, in setup
+2025-10-02T16:54:06.56813476Z     apps.populate(settings.INSTALLED_APPS)
+2025-10-02T16:54:06.56813817Z     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.56814103Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/apps/registry.py", line 116, in populate
+2025-10-02T16:54:06.56814365Z     app_config.import_models()
+2025-10-02T16:54:06.56815257Z     ~~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-10-02T16:54:06.56815499Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/apps/config.py", line 269, in import_models
+2025-10-02T16:54:06.56815691Z     self.models_module = import_module(models_module_name)
+2025-10-02T16:54:06.56815885Z                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.56816089Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:54:06.56816335Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:54:06.56816617Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.568168871Z   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+2025-10-02T16:54:06.568176061Z   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+2025-10-02T16:54:06.568179071Z   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+2025-10-02T16:54:06.568181921Z   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+2025-10-02T16:54:06.568188401Z   File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+2025-10-02T16:54:06.568191371Z   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+2025-10-02T16:54:06.568194071Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/contrib/auth/models.py", line 3, in <module>
+2025-10-02T16:54:06.568196761Z     from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+2025-10-02T16:54:06.568199131Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/contrib/auth/base_user.py", line 57, in <module>
+2025-10-02T16:54:06.568201642Z     class AbstractBaseUser(models.Model):
+2025-10-02T16:54:06.568204171Z     ...<109 lines>...
+2025-10-02T16:54:06.568206722Z             )
+2025-10-02T16:54:06.568209332Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 143, in __new__
+2025-10-02T16:54:06.568212372Z     new_class.add_to_class("_meta", Options(meta, app_label))
+2025-10-02T16:54:06.568215162Z     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.568217582Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 371, in add_to_class
+2025-10-02T16:54:06.568220232Z     value.contribute_to_class(cls, name)
+2025-10-02T16:54:06.568222752Z     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+2025-10-02T16:54:06.568225692Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/models/options.py", line 243, in contribute_to_class
+2025-10-02T16:54:06.568228212Z     self.db_table, connection.ops.max_name_length()
+2025-10-02T16:54:06.568230872Z                    ^^^^^^^^^^^^^^
+2025-10-02T16:54:06.568233282Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/utils/connection.py", line 15, in __getattr__
+2025-10-02T16:54:06.568235332Z     return getattr(self._connections[self._alias], item)
+2025-10-02T16:54:06.568237623Z                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2025-10-02T16:54:06.568239872Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/utils/connection.py", line 62, in __getitem__
+2025-10-02T16:54:06.568242063Z     conn = self.create_connection(alias)
+2025-10-02T16:54:06.568244133Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/utils.py", line 193, in create_connection
+2025-10-02T16:54:06.568246163Z     backend = load_backend(db["ENGINE"])
+2025-10-02T16:54:06.568248403Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/utils.py", line 113, in load_backend
+2025-10-02T16:54:06.568256313Z     return import_module("%s.base" % backend_name)
+2025-10-02T16:54:06.568258753Z   File "/opt/render/project/python/Python-3.13.4/lib/python3.13/importlib/__init__.py", line 88, in import_module
+2025-10-02T16:54:06.568261083Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-10-02T16:54:06.568263563Z            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-02T16:54:06.568270633Z   File "/opt/render/project/src/.venv/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+2025-10-02T16:54:06.568273333Z     raise ImproperlyConfigured("Error loading psycopg2 or psycopg module")
+2025-10-02T16:54:06.568279344Z django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 or psycopg module

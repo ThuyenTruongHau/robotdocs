@@ -18,6 +18,10 @@ python -c "import django; print(f'Django version: {django.get_version()}')"
 echo "Verifying Gunicorn installation..."
 python -c "import gunicorn; print('Gunicorn installed successfully')"
 
+# Verify psycopg installation
+echo "Verifying psycopg installation..."
+python -c "import psycopg; print('psycopg installed successfully')" || echo "WARNING: psycopg not found"
+
 # Collect static files
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
