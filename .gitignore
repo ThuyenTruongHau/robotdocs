@@ -138,3 +138,16 @@ dist
 # Temporary folders
 tmp/
 temp/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Python packaging
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
