@@ -9,3 +9,7 @@ celery==5.3.4
 redis==5.0.1
 django-filter==23.3
 drf-yasg==1.21.7
+
+# Production deployment
+gunicorn==21.2.0
+whitenoise==6.6.0
