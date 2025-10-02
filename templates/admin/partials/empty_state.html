@@ -1,0 +1,16 @@
+<!-- Empty State Component -->
+<div class="text-center py-5">
+    <i class="{{ icon_class }} fa-3x text-muted mb-3"></i>
+    <h5 class="text-muted">{{ empty_title }}</h5>
+    {% if search_query or category_filter or brand_filter %}
+        <p class="text-muted">{{ empty_search_message }}</p>
+        <a href="{% url list_url %}" class="btn btn-outline-primary">
+            {{ view_all_text }}
+        </a>
+    {% else %}
+        <p class="text-muted">{{ empty_create_message }}</p>
+        <a href="{% url create_url %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> {{ create_button_text }}
+        </a>
+    {% endif %}
+</div>

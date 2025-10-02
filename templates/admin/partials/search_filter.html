@@ -1,0 +1,40 @@
+<!-- Search and Filter Component -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <form method="get" class="d-flex">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" 
+                       placeholder="{{ search_placeholder }}" 
+                       value="{{ search_query|default:'' }}">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    {% if filter_options %}
+    <div class="col-md-4">
+        <form method="get" class="d-flex">
+            {% if search_query %}
+                <input type="hidden" name="search" value="{{ search_query }}">
+            {% endif %}
+            <select name="{{ filter_name }}" class="form-select" onchange="this.form.submit()">
+                <option value="">{{ filter_placeholder }}</option>
+                {% for option in filter_options %}
+                    <option value="{{ option.value }}" 
+                            {% if option.value == current_filter %}selected{% endif %}>
+                        {{ option.label }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    {% endif %}
+    
+    <div class="col-md-2 text-end">
+        <a href="{{ create_url }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> {{ create_button_text }}
+        </a>
+    </div>
+</div>

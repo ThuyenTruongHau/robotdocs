@@ -1,0 +1,163 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block title %}{{ user.username }} - Thado Robot Admin{% endblock %}
+{% block page_title %}{{ user.username }}{% endblock %}
+
+{% block page_actions %}
+<div class="btn-group" role="group">
+    <a href="{% url 'manage_core:user_list' %}" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- User Info -->
+    <div class="col-lg-8">
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-circle"></i> Thông tin User
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" alt="{{ user.username }}" 
+                                 class="img-fluid rounded shadow">
+                        {% else %}
+                            <div class="bg-light d-flex align-items-center justify-content-center rounded" 
+                                 style="height: 200px;">
+                                <i class="fas fa-user fa-3x text-muted"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><strong>ID:</strong></td>
+                                <td>{{ user.id }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Username:</strong></td>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Họ tên:</strong></td>
+                                <td>
+                                    {% if user.first_name or user.last_name %}
+                                        {{ user.first_name }} {{ user.last_name }}
+                                    {% else %}
+                                        <span class="text-muted">Chưa có</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trạng thái:</strong></td>
+                                <td>
+                                    {% if user.is_active %}
+                                        <span class="badge bg-success">Hoạt động</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Không hoạt động</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vai trò:</strong></td>
+                                <td>
+                                    {% if user.profile %}
+                                        {% if user.profile.role == 'admin' %}
+                                            <span class="badge bg-danger">Quản trị viên</span>
+                                        {% else %}
+                                            <span class="badge bg-info">Nhân viên</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="badge bg-secondary">Chưa phân quyền</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ngày tạo:</strong></td>
+                                <td>{{ user.date_joined|date:"d/m/Y H:i:s" }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Đăng nhập cuối:</strong></td>
+                                <td>
+                                    {% if user.last_login %}
+                                        {{ user.last_login|date:"d/m/Y H:i:s" }}
+                                    {% else %}
+                                        <span class="text-muted">Chưa đăng nhập</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-lg-4">
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt"></i> Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{% url 'manage_core:user_edit' user.pk %}" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> Chỉnh sửa User
+                    </a>
+                    <button type="button" class="btn btn-danger user-delete-btn" 
+                            data-user-id="{{ user.pk }}" 
+                            data-user-name="{{ user.username }}">
+                        <i class="fas fa-trash"></i> Xóa User
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Info -->
+        <div class="card shadow">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-shield-alt"></i> Thông tin vai trò
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    {% if profile %}
+                        {% if profile.role == 'admin' %}
+                            <h4 class="text-danger">Quản trị viên</h4>
+                            <p class="text-muted mb-2">Có toàn quyền quản trị hệ thống</p>
+                            <small class="text-info">Có thể tạo, sửa, xóa user và quản lý tất cả dữ liệu</small>
+                        {% else %}
+                            <h4 class="text-info">Nhân viên</h4>
+                            <p class="text-muted mb-2">Quyền hạn cơ bản</p>
+                            <small class="text-info">Có thể xem và chỉnh sửa dữ liệu</small>
+                        {% endif %}
+                    {% else %}
+                        <h4 class="text-secondary">Chưa phân quyền</h4>
+                        <p class="text-muted mb-0">User này chưa được phân quyền</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'admin/partials/user_delete_modal.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/user-delete.js' %}"></script>
+{% endblock %}

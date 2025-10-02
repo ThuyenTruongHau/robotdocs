@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Thado Robot Admin</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #36A9A9 0%, #2a8a8a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.4s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-section img {
+            height: 45px;
+            width: auto;
+            margin-bottom: 0.75rem;
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+        }
+        
+        .logo-section h1 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .logo-section p {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .form-label {
+            color: #2c3e50;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-control:focus {
+            border-color: #36A9A9;
+            box-shadow: 0 0 0 0.2rem rgba(54, 169, 169, 0.15);
+            background: white;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group .form-control {
+            padding-left: 2.5rem;
+        }
+        
+        .input-group .input-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 3;
+            font-size: 0.9rem;
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #36A9A9 0%, #2a8a8a 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 0.7rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            width: 100%;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(54, 169, 169, 0.3);
+            color: white;
+        }
+        
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-login:hover::before {
+            left: 100%;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+        }
+        
+        .form-check-input:checked {
+            background-color: #36A9A9;
+            border-color: #36A9A9;
+        }
+        
+        .form-check-label {
+            color: #6c757d;
+        }
+        
+        .forgot-password {
+            color: #36A9A9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .forgot-password:hover {
+            color: #2a8a8a;
+            text-decoration: underline;
+        }
+        
+        .alert {
+            border-radius: 10px;
+            border: none;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .alert-danger {
+            background: rgba(220, 53, 69, 0.1);
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .alert-success {
+            background: rgba(25, 135, 84, 0.1);
+            color: #0f5132;
+            border-left: 4px solid #198754;
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        .loading .spinner-border {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 576px) {
+            .login-container {
+                margin: 0.5rem;
+                padding: 1.5rem;
+                max-width: 350px;
+            }
+            
+            .logo-section h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo-section img {
+                height: 40px;
+            }
+            
+            .form-group {
+                margin-bottom: 0.8rem;
+            }
+            
+            .remember-forgot {
+                margin-bottom: 0.8rem;
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <div class="login-container">
+        <div class="logo-section">
+            <img src="/static/images/logo2.png" alt="Thado Robot Logo" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <i class="fas fa-robot" style="display: none; font-size: 3rem; color: #36A9A9;"></i>
+            <h1>Thado Robot</h1>
+            <p>Trang quản trị tài liệu robot Thadosoft</p>
+        </div>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    <i class="fas fa-{% if message.tags == 'error' %}exclamation-triangle{% else %}check-circle{% endif %}"></i>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="post" id="loginForm">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="username" class="form-label">
+                    <i class="fas fa-user"></i> Tên đăng nhập
+                </label>
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" 
+                           class="form-control" 
+                           id="username" 
+                           name="username" 
+                           placeholder="Nhập tên đăng nhập"
+                           required
+                           autocomplete="username">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock"></i> Mật khẩu
+                </label>
+                <div class="input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" 
+                           class="form-control" 
+                           id="password" 
+                           name="password" 
+                           placeholder="Nhập mật khẩu"
+                           required
+                           autocomplete="current-password">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-login">
+                <span class="loading">
+                    <span class="spinner-border spinner-border-sm" role="status"></span>
+                    Đang đăng nhập...
+                </span>
+                <span class="normal">
+                    <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                </span>
+            </button>
+        </form>
+        
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Optimized login form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const btn = loginForm.querySelector('.btn-login');
+            const loading = btn.querySelector('.loading');
+            const normal = btn.querySelector('.normal');
+            
+            // Fast form submission
+            loginForm.addEventListener('submit', function(e) {
+                // Immediate visual feedback
+                loading.style.display = 'inline-block';
+                normal.style.display = 'none';
+                btn.disabled = true;
+                
+                // Prevent double submission
+                loginForm.style.pointerEvents = 'none';
+                
+                // Re-enable after 2 seconds (reduced from 3)
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    normal.style.display = 'inline-block';
+                    btn.disabled = false;
+                    loginForm.style.pointerEvents = 'auto';
+                }, 2000);
+            });
+            
+            // Optimized focus effects with event delegation
+            loginForm.addEventListener('focusin', function(e) {
+                if (e.target.classList.contains('form-control')) {
+                    e.target.parentElement.classList.add('focused');
+                }
+            });
+            
+            loginForm.addEventListener('focusout', function(e) {
+                if (e.target.classList.contains('form-control') && !e.target.value) {
+                    e.target.parentElement.classList.remove('focused');
+                }
+            });
+            
+            // Auto-focus username field
+            const usernameField = document.getElementById('username');
+            if (usernameField) {
+                usernameField.focus();
+            }
+            
+            // Enter key optimization
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !btn.disabled) {
+                    loginForm.submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

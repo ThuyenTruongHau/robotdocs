@@ -1,0 +1,253 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Cài đặt hệ thống - Thado Robot Admin{% endblock %}
+{% block page_title %}Cài đặt hệ thống{% endblock %}
+
+{% block page_actions %}
+<div class="btn-group" role="group">
+    <a href="{% url 'manage_category:admin_dashboard' %}" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Quay lại Dashboard
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-cog"></i> Cài đặt hệ thống
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-image"></i> Logo & Giao diện
+                            </h6>
+                            
+                            <!-- Logo Upload -->
+                            <div class="mb-3">
+                                <label for="{{ form.logo.id_for_label }}" class="form-label">
+                                    Logo hệ thống
+                                </label>
+                                {{ form.logo }}
+                                <div class="form-text">{{ form.logo.help_text }}</div>
+                                {% if form.logo.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.logo.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                
+                                <!-- Current Logo Preview -->
+                                {% if current_logo %}
+                                    <div class="mt-2">
+                                        <small class="text-muted">Logo hiện tại:</small>
+                                        <img src="/media/system/logo/{{ current_logo }}" alt="Current Logo" 
+                                             class="img-thumbnail d-block mt-1" style="max-width: 200px;">
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Site Name -->
+                            <div class="mb-3">
+                                <label for="{{ form.site_name.id_for_label }}" class="form-label">
+                                    Tên hệ thống
+                                </label>
+                                {{ form.site_name }}
+                                <div class="form-text">{{ form.site_name.help_text }}</div>
+                                {% if form.site_name.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.site_name.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Site Description -->
+                            <div class="mb-3">
+                                <label for="{{ form.site_description.id_for_label }}" class="form-label">
+                                    Mô tả hệ thống
+                                </label>
+                                {{ form.site_description }}
+                                <div class="form-text">{{ form.site_description.help_text }}</div>
+                                {% if form.site_description.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.site_description.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-palette"></i> Màu sắc giao diện
+                            </h6>
+                            
+                            <!-- Primary Color -->
+                            <div class="mb-3">
+                                <label for="{{ form.primary_color.id_for_label }}" class="form-label">
+                                    Màu chủ đạo
+                                </label>
+                                {{ form.primary_color }}
+                                <div class="form-text">{{ form.primary_color.help_text }}</div>
+                                {% if form.primary_color.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.primary_color.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Secondary Color -->
+                            <div class="mb-3">
+                                <label for="{{ form.secondary_color.id_for_label }}" class="form-label">
+                                    Màu phụ
+                                </label>
+                                {{ form.secondary_color }}
+                                <div class="form-text">{{ form.secondary_color.help_text }}</div>
+                                {% if form.secondary_color.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.secondary_color.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Color Preview -->
+                            <div class="mb-3">
+                                <label class="form-label">Xem trước màu sắc</label>
+                                <div class="d-flex gap-2">
+                                    <div class="color-preview" style="width: 50px; height: 50px; background-color: #2563eb; border-radius: 8px;"></div>
+                                    <div class="color-preview" style="width: 50px; height: 50px; background-color: #64748b; border-radius: 8px;"></div>
+                                </div>
+                                <small class="text-muted">Màu chủ đạo và màu phụ</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Errors -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'manage_category:admin_dashboard' %}" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Hủy
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Lưu cài đặt
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Section -->
+    <div class="col-lg-4">
+        <div class="card shadow">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle"></i> Hướng dẫn
+                </h5>
+            </div>
+            <div class="card-body">
+                <h6>Logo hệ thống:</h6>
+                <ul class="small">
+                    <li>Định dạng: JPG, PNG, GIF</li>
+                    <li>Kích thước: Tối đa 2MB</li>
+                    <li>Tỷ lệ: 16:9 hoặc vuông</li>
+                </ul>
+
+                <h6 class="mt-3">Màu sắc:</h6>
+                <ul class="small">
+                    <li>Màu chủ đạo: Dùng cho buttons, links</li>
+                    <li>Màu phụ: Dùng cho text, borders</li>
+                    <li>Định dạng: Hex color (#RRGGBB)</li>
+                </ul>
+
+                <h6 class="mt-3">Lưu ý:</h6>
+                <ul class="small">
+                    <li>Cài đặt sẽ áp dụng ngay lập tức</li>
+                    <li>Logo sẽ hiển thị ở sidebar</li>
+                    <li>Màu sắc sẽ thay đổi toàn bộ giao diện</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Current Settings -->
+        <div class="card shadow mt-3">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle"></i> Cài đặt hiện tại
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="small">
+                    <p><strong>Tên:</strong> Thado Robot</p>
+                    <p><strong>Mô tả:</strong> Hệ thống quản lý robot</p>
+                    <p><strong>Màu chủ đạo:</strong> <span class="badge" style="background-color: #2563eb;">#2563eb</span></p>
+                    <p><strong>Màu phụ:</strong> <span class="badge" style="background-color: #64748b;">#64748b</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Color preview update
+    document.getElementById('{{ form.primary_color.id_for_label }}').addEventListener('change', function(e) {
+        document.querySelector('.color-preview').style.backgroundColor = e.target.value;
+    });
+
+    document.getElementById('{{ form.secondary_color.id_for_label }}').addEventListener('change', function(e) {
+        document.querySelectorAll('.color-preview')[1].style.backgroundColor = e.target.value;
+    });
+
+    // Logo preview
+    document.getElementById('{{ form.logo.id_for_label }}').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Remove existing preview
+                const existingPreview = document.querySelector('.logo-preview');
+                if (existingPreview) {
+                    existingPreview.remove();
+                }
+                
+                // Create new preview
+                const preview = document.createElement('div');
+                preview.className = 'logo-preview mt-2';
+                preview.innerHTML = `
+                    <small class="text-muted">Logo mới:</small>
+                    <img src="${e.target.result}" alt="Preview" class="img-thumbnail d-block mt-1" style="max-width: 200px;">
+                `;
+                
+                // Insert after the file input
+                e.target.parentNode.appendChild(preview);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+{% endblock %}
